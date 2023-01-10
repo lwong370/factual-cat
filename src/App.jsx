@@ -1,16 +1,15 @@
 import React, {useState} from 'react'
 import './App.css'
+import AnimCursor from './components/AnimCursor'
 
-const url = "https://catfact.ninja/fact?max_length=100";
+
+const facts_url = "https://catfact.ninja/fact?max_length=100";
 
 const App = () => {
   const [fact, setFact] = useState("Domestic cats often recognize their own names.");
 
   const getFact = () => {
-    console.log("Hello World");
-
-
-    fetch(url)
+    fetch(facts_url)
       .then((res) => res.json())
       .then((cats) => {
         console.log('Cats: ', cats);
@@ -32,11 +31,12 @@ const App = () => {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
         <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Sofia&display=swap" rel="stylesheet"/>
       </head>
+      <AnimCursor/>
       <header>
-          <h1 className="font-link">Factual Cat</h1>
-        <div class="textbox">        
-            <h3 class="fact">{fact}</h3>
-        </div>
+          <h1 className="title">Factual Cat</h1>
+          <div class="textbox">        
+              <h3 class="fact">{fact}</h3>
+          </div>
             <button className="btn" onClick={getFact}>Get the Faxs</button>
       </header>
     </html>
